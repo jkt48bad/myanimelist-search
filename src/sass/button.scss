@@ -1,0 +1,36 @@
+button {
+    margin: 10px;
+}
+
+.contained-button {
+    border: 0;
+    padding: 10px 16px;
+    color: $color-font-white;
+    background-color: $color-dark;
+    @include rounded(3px);
+    @include shadow-height(1);
+}
+
+.contained-button:hover {
+    @include shadow-height(2);
+}
+
+.contained-button:focus {
+    background-color: $color-light;
+}
+
+.text-button {
+    padding: 10px 16px;
+    border: 0;
+    background-color: inherit;
+    @include rounded(3px);
+    color: $color-dark;
+}
+
+.text-button:hover {
+    background-color: $color-background-active;
+}
+
+.text-button:focus {
+    background-color: $color-background-active;
+}

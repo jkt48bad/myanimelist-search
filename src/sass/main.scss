@@ -1,5 +1,26 @@
+@import 'mixins';
 @import 'normalize';
+@import 'colors';
+@import 'text';
+@import 'input';
+@import 'button';
 
-div {
-    text-align: center;
+:focus {
+    outline: 0;
+}
+
+body {
+    width: 75%;
+    margin: 0 auto;
+}
+
+.search-container {
+    width: 90%;
+    margin: 10px auto;
+}
+
+.button-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
 }

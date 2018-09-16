@@ -1,0 +1,18 @@
+.input-box {
+    border: 1.25px solid #a3a3a3;
+    border-radius: 5px;
+    padding: 10px 16px;
+    width: 90%;
+}
+
+.input-box:active {
+    border: 1.5px solid $color-font-black;
+}
+
+.input-box:hover {
+    border: 1.25px solid $color-font-black;
+}
+
+.input-box:focus {
+    border: 1.5px solid $color-dark;
+}

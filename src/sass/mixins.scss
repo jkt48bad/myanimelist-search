@@ -1,0 +1,22 @@
+@mixin rounded($radius: 0.5em) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    border-radius: $radius;
+}
+
+@mixin shadow-height($height) {
+    @if $height == 0 {
+    } @else if $height == 1 {
+        @include box-shadow(0, 1px, 3px, rgba(0, 0, 0, 0.12), 0, 1px, 2px, rgba(0, 0, 0, 0.24));
+    } @else if $height == 2 {
+        @include box-shadow(0, 3px, 6px, rgba(0, 0, 0, 0.16), 0, 3px, 6px, rgba(0, 0, 0, 0.23));
+    } @else if $height == 3 {
+        @include box-shadow(0, 10px, 20px, rgba(0, 0, 0, 0.19), 0, 6px, 6px, rgba(0, 0, 0, 0.23));
+    }
+}
+
+@mixin box-shadow($top1, $left1, $blur1, $color1, $top2, $left2, $blur2, $color2) {
+    -webkit-box-shadow: $top1 $left1 $blur1 $color1, $top2 $left2 $blur2 $color2;
+    -moz-box-shadow: $top1 $left1 $blur1 $color1, $top2 $left2 $blur2 $color2;
+    box-shadow: $top1 $left1 $blur1 $color1, $top2 $left2 $blur2 $color2;
+}

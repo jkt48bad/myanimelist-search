@@ -78,28 +78,25 @@ function getSearchResults(page) {
         console.log(jsonResponse);
     });
 }
-/**
- * Toggles an element visible or hidden based on consistent parameters
- * @param $element Element to be toggled
- */
-function toggleElement($element) {
-    $element.slideToggle({
-        duration: 200,
-        easing: 'swing',
-    });
-}
 $('document').ready(function () {
     var $advancedOptions = $('#advanced-options');
     var $advancedButton = $('#advanced-button');
     $advancedOptions.hide();
     // toggles advanced options menu display
     $advancedButton.on('click', function () {
-        toggleElement($advancedOptions);
+        $advancedOptions.slideToggle(200);
     });
-    $('#search-button').on('click', function () {
-        if ($advancedButton.is(':visible')) {
-            toggleElement($advancedOptions);
+    // perform search if enter is pressed while search box is active
+    $('#search-box').keypress(function (event) {
+        var key = event.which;
+        if (key === 13) {
+            $('#search-button').click();
+            return false;
         }
+    });
+    // perform search
+    $('#search-button').on('click', function () {
+        $advancedOptions.slideUp(200);
         getSearchResults('1');
     });
 });

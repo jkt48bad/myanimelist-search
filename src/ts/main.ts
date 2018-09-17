@@ -104,17 +104,6 @@ function getSearchResults(page: string) {
         });
 }
 
-/**
- * Toggles an element visible or hidden based on consistent parameters
- * @param $element Element to be toggled
- */
-function toggleElement($element: JQuery<HTMLElement>) {
-    $element.slideToggle({
-        duration: 200,
-        easing: 'swing',
-    });
-}
-
 $('document').ready(() => {
     const $advancedOptions: JQuery<HTMLElement> = $('#advanced-options');
     const $advancedButton: JQuery<HTMLElement> = $('#advanced-button');
@@ -123,13 +112,21 @@ $('document').ready(() => {
 
     // toggles advanced options menu display
     $advancedButton.on('click', () => {
-        toggleElement($advancedOptions);
+        $advancedOptions.slideToggle(200);
     });
 
-    $('#search-button').on('click', () => {
-        if ($advancedButton.is(':visible')) {
-            toggleElement($advancedOptions);
+    // perform search if enter is pressed while search box is active
+    $('#search-box').keypress((event) => {
+        const key: number = event.which;
+        if (key === 13) {
+            $('#search-button').click();
+            return false;
         }
+    });
+
+    // perform search
+    $('#search-button').on('click', () => {
+        $advancedOptions.slideUp(200);
         getSearchResults('1');
     });
 });

@@ -1,18 +1,88 @@
-.input-box {
+$checkbox-size: 18px;
+
+fieldset {
+    border: none;
+    margin: 10px;
+}
+
+label.checkbox {
+    display: block;
+    padding: 12px 0;
+    height: $checkbox-size;
+}
+
+label.checkbox span {
+    padding-left: 26px;
+    cursor: pointer;
+}
+
+input[type='checkbox'] {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    box-sizing: content-box;
+
+    background-color: inherit;
+    border: 1.5px solid $color-font-black;
+    border-radius: 3px;
+    width: $checkbox-size;
+    height: $checkbox-size;
+    cursor: pointer;
+}
+
+input[type='checkbox']:hover:after {
+    content: '';
+    width: $checkbox-size + 6;
+    height: $checkbox-size + 6;
+    border-radius: 100%;
+    background-color: $color-background-selected;
+}
+
+input[type='checkbox'] + span {
+    position: relative;
+    top: -5px;
+}
+
+input[type='checkbox']:active + span,
+input[type='checkbox']:checked:active + span,
+input[type='checkbox']:checked + span {
+    top: 0px;
+}
+
+input[type='checkbox']:active,
+input[type='checkbox']:checked:active,
+input[type='checkbox']:checked {
+    border: 1.5px solid $color-dark;
+    background-color: $color-dark;
+}
+
+input[type='checkbox']:active:after,
+input[type='checkbox']:checked:active:after,
+input[type='checkbox']:checked:after {
+    content: '\f00c';
+    font-family: 'Font Awesome\ 5 Free';
+    color: white;
+    font-weight: 900;
+    font-size: 12px;
+    position: relative;
+    left: 2.5px;
+    top: -1px;
+}
+
+input[type='text'] {
     border: 1.25px solid #a3a3a3;
     border-radius: 5px;
     padding: 10px 16px;
-    width: 90%;
 }
 
-.input-box:active {
+input[type='text']:active {
     border: 1.5px solid $color-font-black;
 }
 
-.input-box:hover {
+input[type='text']:hover {
     border: 1.25px solid $color-font-black;
 }
 
-.input-box:focus {
+input[type='text']:focus {
     border: 1.5px solid $color-dark;
 }

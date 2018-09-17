@@ -78,17 +78,28 @@ function getSearchResults(page) {
         console.log(jsonResponse);
     });
 }
+/**
+ * Toggles an element visible or hidden based on consistent parameters
+ * @param $element Element to be toggled
+ */
+function toggleElement($element) {
+    $element.slideToggle({
+        duration: 200,
+        easing: 'swing',
+    });
+}
 $('document').ready(function () {
     var $advancedOptions = $('#advanced-options');
+    var $advancedButton = $('#advanced-button');
     $advancedOptions.hide();
     // toggles advanced options menu display
-    $('#advanced-button').on('click', function () {
-        $advancedOptions.slideToggle({
-            duration: 200,
-            easing: 'swing',
-        });
+    $advancedButton.on('click', function () {
+        toggleElement($advancedOptions);
     });
     $('#search-button').on('click', function () {
+        if ($advancedButton.is(':visible')) {
+            toggleElement($advancedOptions);
+        }
         getSearchResults('1');
     });
 });

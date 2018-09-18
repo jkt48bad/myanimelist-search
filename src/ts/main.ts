@@ -123,7 +123,6 @@ function renderSearchResults(jsonResponse: any) {
             <span title="Content Type"><i class="fas fa-tv"></i> ${results[i].type}</span>
             <span title="Episode Count"><i class="fas fa-list-ol"></i> ${results[i].episodes}</span>
             <span title="User Rating"><i class="fas fa-star"></i> ${results[i].score}</span>
-            <span title="Rating"><i class="fas fa-users"></i> ${results[i].rated}</span>
         </div>
     </div>`;
         // appends the results and sets their visability to near 0

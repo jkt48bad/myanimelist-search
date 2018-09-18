@@ -13,11 +13,13 @@
     width: 50%;
     max-width: 225px;
     .top-section {
+        height: 100%;
         display: flex;
         flex-direction: column;
         align-items: flex-start;
 
         align-self: flex-start;
+        justify-self: stretch;
 
         .image {
             height: 11rem;
@@ -58,7 +60,7 @@
 
         span {
             margin: 1px;
-            padding: 4px 6px;
+            padding: 4px 6px 6px 6px;
             background-color: $color-dark;
             color: white;
             border-radius: 10px;

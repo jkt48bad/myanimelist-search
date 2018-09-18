@@ -545,10 +545,12 @@ button {
   max-width: 225px;
 }
 .search-result .top-section {
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   align-self: flex-start;
+  justify-self: stretch;
 }
 .search-result .top-section .image {
   height: 11rem;
@@ -582,7 +584,7 @@ button {
 }
 .search-result .info span {
   margin: 1px;
-  padding: 4px 6px;
+  padding: 4px 6px 6px 6px;
   background-color: #005ecb;
   color: white;
   border-radius: 10px;

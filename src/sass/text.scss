@@ -4,7 +4,7 @@ $weight-medium: 500;
 
 * {
     font-family: 'Roboto', sans-serif;
-    font-size: 16px;
+    font-size: 14px;
 }
 
 h1 {
@@ -14,8 +14,8 @@ h1 {
 }
 
 h2 {
-    font-weight: $weight-light;
-    font-size: 3.75rem;
+    font-weight: $weight-medium;
+    font-size: 1.428571428571429rem;
     letter-spacing: -0.5;
 }
 
@@ -60,4 +60,8 @@ legend {
     font-weight: $weight-medium;
     font-size: 0.875rem;
     letter-spacing: 0.1;
+}
+
+p {
+    margin: 0;
 }

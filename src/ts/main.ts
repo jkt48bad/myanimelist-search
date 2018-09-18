@@ -1,4 +1,32 @@
 /**
+ * Interface for search results from Jikan.
+ */
+interface SearchResult {
+    airing: boolean;
+    end_date: string;
+    episodes: number;
+    image_url: string;
+    mal_id: number;
+    members: number;
+    rated: string;
+    score: number;
+    start_date: string;
+    synopsis: string;
+    title: string;
+    type: string;
+    url: string;
+}
+
+/**
+ * Interface for url parameter builder. Represents the input IDs of the checkboxes
+ * and the name of the param.
+ */
+interface ParamDetails {
+    name: string;
+    inputs: string[];
+}
+
+/**
  * returns a string of parameter values from the checkboxes checked in advanced options
  * @param ids An array of IDs attached to the checkboxes to get the state of
  */
@@ -17,15 +45,6 @@ function getCheckboxState(ids: string[]): string {
     }
 
     return contentValue;
-}
-
-/**
- * Interface for url parameter builder. Represents the input IDs of the checkboxes
- * and the name of the param.
- */
-interface ParamDetails {
-    name: string;
-    inputs: string[];
 }
 
 /**
@@ -82,6 +101,46 @@ function buildSearchUrl(page: string): string {
 }
 
 /**
+ * Renders the search results to the page
+ * @param jsonResponse json response containing search results
+ */
+function renderSearchResults(jsonResponse: any) {
+    const results: SearchResult[] = jsonResponse.results;
+
+    for (let i: number = 0; i < results.length; i += 1) {
+        const content: string = `<div class="material-card search-result">
+        <div class="top-section">
+            <div class="image">
+                <img src="${results[i].image_url}"
+                    alt="${results[i].title}">
+            </div>
+            <div class="details">
+                <h2>${results[i].title}</h2>
+                <p>${results[i].synopsis}</p>
+            </div>
+        </div>
+        <div class="info">
+            <span title="Content Type"><i class="fas fa-tv"></i> ${results[i].type}</span>
+            <span title="Episode Count"><i class="fas fa-list-ol"></i> ${results[i].episodes}</span>
+            <span title="User Rating"><i class="fas fa-star"></i> ${results[i].score}</span>
+            <span title="Rating"><i class="fas fa-users"></i> ${results[i].rated}</span>
+        </div>
+    </div>`;
+        // appends the results and sets their visability to near 0
+        $('.result-container').append($(content).fadeTo(0, 0.01));
+    }
+
+    // Fades in the results 1 at a time
+    $('.result-container')
+        .children()
+        .each((index, ele) => {
+            $(ele)
+                .delay(100 * index)
+                .fadeTo(200, 1);
+        });
+}
+
+/**
  * Gets search results from MAL
  */
 function getSearchResults(page: string) {
@@ -100,7 +159,7 @@ function getSearchResults(page: string) {
             (networkError) => console.log(networkError.message)
         )
         .then((jsonResponse) => {
-            console.log(jsonResponse);
+            renderSearchResults(jsonResponse);
         });
 }
 

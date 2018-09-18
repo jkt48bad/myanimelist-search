@@ -333,7 +333,7 @@ template {
 
 * {
   font-family: "Roboto", sans-serif;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 h1 {
@@ -343,8 +343,8 @@ h1 {
 }
 
 h2 {
-  font-weight: 300;
-  font-size: 3.75rem;
+  font-weight: 500;
+  font-size: 1.4285714286rem;
   letter-spacing: -0.5;
 }
 
@@ -389,6 +389,10 @@ legend {
   font-weight: 500;
   font-size: 0.875rem;
   letter-spacing: 0.1;
+}
+
+p {
+  margin: 0;
 }
 
 fieldset {
@@ -522,6 +526,74 @@ button {
   background-color: #448aff1f;
 }
 
+.material-card {
+  margin: 8px;
+  width: 100%;
+  -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+}
+
+.search-result {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 50%;
+  max-width: 225px;
+}
+.search-result .top-section {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: flex-start;
+}
+.search-result .top-section .image {
+  height: 11rem;
+  width: 100%;
+  overflow: hidden;
+}
+.search-result .top-section img {
+  height: auto;
+  width: 100%;
+}
+.search-result .top-section .details {
+  padding: 8px;
+  padding-bottom: 4px;
+}
+.search-result .top-section .details h2 {
+  margin: 0;
+}
+.search-result .top-section .details p {
+  padding-top: 8px;
+}
+.search-result .top-section:hover {
+  background-color: rgba(0, 0, 0, 0.075);
+}
+.search-result .info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 7px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.search-result .info span {
+  margin: 1px;
+  padding: 4px 6px;
+  background-color: #005ecb;
+  color: white;
+  border-radius: 10px;
+  font-size: 0.8571428571rem;
+}
+.search-result .info span i {
+  position: relative;
+  top: 0px;
+  font-size: 1em;
+}
+
 :focus {
   outline: 0;
 }
@@ -548,6 +620,23 @@ body {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+
+.result-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.visible {
+  opacity: 1;
+  transition: opacity 2s linear;
 }
 
 /*# sourceMappingURL=main.css.map */

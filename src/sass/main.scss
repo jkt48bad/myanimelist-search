@@ -4,6 +4,7 @@
 @import 'text';
 @import 'input';
 @import 'button';
+@import 'card';
 
 :focus {
     outline: 0;
@@ -31,4 +32,21 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.result-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hidden {
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s 2s, opacity 2s linear;
+}
+
+.visible {
+    opacity: 1;
+    transition: opacity 2s linear;
 }

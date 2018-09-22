@@ -77,8 +77,8 @@ function renderSearchResults(jsonResponse) {
         .children()
         .each(function (index, ele) {
         $(ele)
-            .delay(100 * index)
-            .fadeTo(200, 1);
+            .delay(50 * index)
+            .fadeTo(100, 1);
     });
 }
 /**
@@ -101,6 +101,7 @@ function getSearchResults(page) {
 $('document').ready(function () {
     var $advancedOptions = $('#advanced-options');
     var $advancedButton = $('#advanced-button');
+    var pageNumber = 1;
     $advancedOptions.hide();
     // toggles advanced options menu display
     $advancedButton.on('click', function () {
@@ -117,7 +118,18 @@ $('document').ready(function () {
     // perform search
     $('#search-button').on('click', function () {
         $advancedOptions.slideUp(200);
-        getSearchResults('1');
+        pageNumber = 1;
+        $('.result-container').html('');
+        getSearchResults(pageNumber.toString());
+    });
+    // auto scroll
+    $(window).scroll(function () {
+        if ($(window).scrollTop() + $(window).height() ===
+            $(document).height()) {
+            $advancedOptions.slideUp(200);
+            pageNumber += 1;
+            getSearchResults(pageNumber.toString());
+        }
     });
 });
 //# sourceMappingURL=main.js.map

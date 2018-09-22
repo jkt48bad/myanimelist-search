@@ -134,8 +134,8 @@ function renderSearchResults(jsonResponse: any) {
         .children()
         .each((index, ele) => {
             $(ele)
-                .delay(100 * index)
-                .fadeTo(200, 1);
+                .delay(50 * index)
+                .fadeTo(100, 1);
         });
 }
 
@@ -166,6 +166,8 @@ $('document').ready(() => {
     const $advancedOptions: JQuery<HTMLElement> = $('#advanced-options');
     const $advancedButton: JQuery<HTMLElement> = $('#advanced-button');
 
+    let pageNumber: number = 1;
+
     $advancedOptions.hide();
 
     // toggles advanced options menu display
@@ -185,6 +187,20 @@ $('document').ready(() => {
     // perform search
     $('#search-button').on('click', () => {
         $advancedOptions.slideUp(200);
-        getSearchResults('1');
+        pageNumber = 1;
+        $('.result-container').html('');
+        getSearchResults(pageNumber.toString());
+    });
+
+    // auto scroll
+    $(window).scroll(() => {
+        if (
+            ($(window).scrollTop() as number) + ($(window).height() as number) ===
+            $(document).height()
+        ) {
+            $advancedOptions.slideUp(200);
+            pageNumber += 1;
+            getSearchResults(pageNumber.toString());
+        }
     });
 });

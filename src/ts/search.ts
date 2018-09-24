@@ -2,6 +2,8 @@
  * Contains logic for performing a search using the Jikan API
  */
 
+import advancedOptions = require('./advancedOptions');
+
 /**
  * Interface for search results from Jikan.
  */
@@ -29,9 +31,11 @@ function buildSearchUrl(page: string): string {
     const searchParam: string = '?q=';
     const searchValue = $('#search-box').val();
 
-    const contentTypeParam: string = buildUrlParameter(advancedOptionsParams.content);
-    const statusParam: string = buildUrlParameter(advancedOptionsParams.status);
-    const ratingParam: string = buildUrlParameter(advancedOptionsParams.rating);
+    const contentTypeParam: string = advancedOptions.buildUrlParameter(
+        advancedOptions.params.content
+    );
+    const statusParam: string = advancedOptions.buildUrlParameter(advancedOptions.params.status);
+    const ratingParam: string = advancedOptions.buildUrlParameter(advancedOptions.params.rating);
     const pageParam: string = `&page=${page}`;
 
     return `${baseUrl}${searchParam}${searchValue}${contentTypeParam}${statusParam}${ratingParam}${pageParam}`;
@@ -79,7 +83,7 @@ function renderSearchResults(jsonResponse: any) {
 /**
  * Gets search results from MAL
  */
-function getSearchResults(page: string) {
+export function getSearchResults(page: string) {
     const fullUrl: string = buildSearchUrl(page);
 
     console.log(fullUrl);

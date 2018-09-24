@@ -11,7 +11,7 @@ interface ParamDetails {
     inputs: string[];
 }
 
-const advancedOptionsParams = {
+export const params = {
     content: <ParamDetails>{
         name: 'type',
         inputs: ['tvCheckBox', 'ovaCheckBox', 'movieCheckBox', 'specialCheckBox'],
@@ -61,7 +61,7 @@ function getCheckboxState(ids: string[]): string {
  * an empty string if no values are to be sent.
  * @param paramDetails Object representing the details of the parameter to be built
  */
-function buildUrlParameter(paramDetails: ParamDetails): string {
+export function buildUrlParameter(paramDetails: ParamDetails): string {
     const contentParam: string = `&${paramDetails.name}=`;
     const contentValue: string = getCheckboxState(paramDetails.inputs);
     if (contentValue.length !== 0) {

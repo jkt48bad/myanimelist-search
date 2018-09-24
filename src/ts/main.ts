@@ -1,3 +1,5 @@
+import search = require('./search');
+
 /**
  * Contains the logic for interacting with the page
  */
@@ -29,7 +31,7 @@ $('document').ready(() => {
         $advancedOptions.slideUp(200);
         pageNumber = 1;
         $('.result-container').html('');
-        getSearchResults(pageNumber.toString());
+        search.getSearchResults(pageNumber.toString());
     });
 
     // auto scroll
@@ -41,7 +43,7 @@ $('document').ready(() => {
         if (pagePosition >= ($(document).height() as number)) {
             $advancedOptions.slideUp(200);
             pageNumber += 1;
-            getSearchResults(pageNumber.toString());
+            search.getSearchResults(pageNumber.toString());
         }
     });
 });

@@ -194,10 +194,9 @@ $('document').ready(() => {
 
     // auto scroll
     $(window).scroll(() => {
-        if (
-            ($(window).scrollTop() as number) + ($(window).height() as number) ===
-            $(document).height()
-        ) {
+        const pagePosition: number =
+            ($(window).scrollTop() as number) + ($(window).height() as number);
+        if (pagePosition === $(document).height()) {
             $advancedOptions.slideUp(200);
             pageNumber += 1;
             getSearchResults(pageNumber.toString());

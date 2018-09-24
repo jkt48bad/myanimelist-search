@@ -124,8 +124,8 @@ $('document').ready(function () {
     });
     // auto scroll
     $(window).scroll(function () {
-        if ($(window).scrollTop() + $(window).height() ===
-            $(document).height()) {
+        var pagePosition = $(window).scrollTop() + $(window).height();
+        if (pagePosition === $(document).height()) {
             $advancedOptions.slideUp(200);
             pageNumber += 1;
             getSearchResults(pageNumber.toString());

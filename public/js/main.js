@@ -1,5 +1,29 @@
 "use strict";
 /**
+ * Contains the logic for building the URL parameters for the advanced options
+ */
+var advancedOptionsParams = {
+    content: {
+        name: 'type',
+        inputs: ['tvCheckBox', 'ovaCheckBox', 'movieCheckBox', 'specialCheckBox'],
+    },
+    status: {
+        name: 'status',
+        inputs: ['airingCheckBox', 'completedCheckBox', 'upcomingCheckBox'],
+    },
+    rating: {
+        name: 'rating',
+        inputs: [
+            'gCheckBox',
+            'pgCheckBox',
+            'pg13CheckBox',
+            'r17CheckBox',
+            'rCheckBox',
+            'rxCheckBox',
+        ],
+    },
+};
+/**
  * returns a string of parameter values from the checkboxes checked in advanced options
  * @param ids An array of IDs attached to the checkboxes to get the state of
  */
@@ -30,34 +54,56 @@ function buildUrlParameter(paramDetails) {
     return '';
 }
 /**
+ * Contains the logic for interacting with the page
+ */
+$('document').ready(function () {
+    var $advancedOptions = $('#advanced-options');
+    var $advancedButton = $('#advanced-button');
+    var pageNumber = 1;
+    $advancedOptions.hide();
+    // toggles advanced options menu display
+    $advancedButton.on('click', function () {
+        $advancedOptions.slideToggle(200);
+    });
+    // perform search if enter is pressed while search box is active
+    $('#search-box').keypress(function (event) {
+        var key = event.which;
+        if (key === 13) {
+            $('#search-button').click();
+            return false;
+        }
+    });
+    // perform search
+    $('#search-button').on('click', function () {
+        $advancedOptions.slideUp(200);
+        pageNumber = 1;
+        $('.result-container').html('');
+        getSearchResults(pageNumber.toString());
+    });
+    // auto scroll
+    $(window).scroll(function () {
+        // add 1 to handle rounding errors
+        var pagePosition = $(window).scrollTop() + $(window).height() + 1;
+        if (pagePosition >= $(document).height()) {
+            $advancedOptions.slideUp(200);
+            pageNumber += 1;
+            getSearchResults(pageNumber.toString());
+        }
+    });
+});
+/**
+ * Contains logic for performing a search using the Jikan API
+ */
+/**
  * Builds the url to perform an AJAX search from MAL using Jikan
  */
 function buildSearchUrl(page) {
     var baseUrl = 'https://api.jikan.moe/v3/search/anime';
     var searchParam = '?q=';
     var searchValue = $('#search-box').val();
-    var contentParamDetails = {
-        name: 'type',
-        inputs: ['tvCheckBox', 'ovaCheckBox', 'movieCheckBox', 'specialCheckBox'],
-    };
-    var statusParamDetails = {
-        name: 'status',
-        inputs: ['airingCheckBox', 'completedCheckBox', 'upcomingCheckBox'],
-    };
-    var ratingParamDetails = {
-        name: 'rating',
-        inputs: [
-            'gCheckBox',
-            'pgCheckBox',
-            'pg13CheckBox',
-            'r17CheckBox',
-            'rCheckBox',
-            'rxCheckBox',
-        ],
-    };
-    var contentTypeParam = buildUrlParameter(contentParamDetails);
-    var statusParam = buildUrlParameter(statusParamDetails);
-    var ratingParam = buildUrlParameter(ratingParamDetails);
+    var contentTypeParam = buildUrlParameter(advancedOptionsParams.content);
+    var statusParam = buildUrlParameter(advancedOptionsParams.status);
+    var ratingParam = buildUrlParameter(advancedOptionsParams.rating);
     var pageParam = "&page=" + page;
     return "" + baseUrl + searchParam + searchValue + contentTypeParam + statusParam + ratingParam + pageParam;
 }
@@ -98,38 +144,4 @@ function getSearchResults(page) {
         renderSearchResults(jsonResponse);
     });
 }
-$('document').ready(function () {
-    var $advancedOptions = $('#advanced-options');
-    var $advancedButton = $('#advanced-button');
-    var pageNumber = 1;
-    $advancedOptions.hide();
-    // toggles advanced options menu display
-    $advancedButton.on('click', function () {
-        $advancedOptions.slideToggle(200);
-    });
-    // perform search if enter is pressed while search box is active
-    $('#search-box').keypress(function (event) {
-        var key = event.which;
-        if (key === 13) {
-            $('#search-button').click();
-            return false;
-        }
-    });
-    // perform search
-    $('#search-button').on('click', function () {
-        $advancedOptions.slideUp(200);
-        pageNumber = 1;
-        $('.result-container').html('');
-        getSearchResults(pageNumber.toString());
-    });
-    // auto scroll
-    $(window).scroll(function () {
-        var pagePosition = $(window).scrollTop() + $(window).height();
-        if (pagePosition === $(document).height()) {
-            $advancedOptions.slideUp(200);
-            pageNumber += 1;
-            getSearchResults(pageNumber.toString());
-        }
-    });
-});
 //# sourceMappingURL=main.js.map

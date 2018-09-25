@@ -8,12 +8,16 @@ $('document').ready(() => {
     const $advancedOptions: JQuery<HTMLElement> = $('#advanced-options');
     const $advancedButton: JQuery<HTMLElement> = $('#advanced-button');
     const $moreOptionsDropdown: JQuery<HTMLElement> = $('#more-options-dropdown');
+    const $aboutModal: JQuery<HTMLElement> = $('#about-modal');
+    const $modalBackground: JQuery<HTMLElement> = $('#modal-background');
 
     let pageNumber: number = 1;
-    let darkMode: boolean = false;
+    const darkMode: boolean = false;
 
     $advancedOptions.hide();
     $moreOptionsDropdown.hide();
+    $aboutModal.hide();
+    $modalBackground.hide();
 
     // toggles advanced options menu display
     $advancedButton.on('click', () => {
@@ -46,22 +50,19 @@ $('document').ready(() => {
     $('#about-option').on('click', () => {
         // hides dropdown menu
         $moreOptionsDropdown.fadeOut(100);
-        // TODO: implement modal and display here
-        alert('display about');
+        // display modal
+        $modalBackground.fadeToggle(200);
+        $aboutModal.fadeToggle(200);
     });
 
-    // toggle dark mode
-    $('#dark-mode-option').on('click', (event) => {
-        // hides dropdown menu
-        $moreOptionsDropdown.fadeOut(100);
-        // TODO: implement dark mode
-        if (darkMode) {
-            $(event.target).text('Enable Dark Mode');
-            darkMode = false;
-        } else {
-            $(event.target).text('Disable Dark Mode');
-            darkMode = true;
-        }
+    $('#close-about-button').on('click', () => {
+        $modalBackground.fadeToggle(200);
+        $aboutModal.fadeToggle(200);
+    });
+
+    $modalBackground.on('click', () => {
+        $modalBackground.fadeToggle(200);
+        $aboutModal.fadeToggle(200);
     });
 
     // auto scroll

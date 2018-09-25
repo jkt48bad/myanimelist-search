@@ -5,11 +5,11 @@
     z-index: 11;
     padding: 4px 0;
 
-    background-color: white;
+    background-color: inherit;
 
     border-radius: 5px;
     border: none;
-    @include shadow-height(1);
+    @include shadow-height(2);
     min-width: 96px;
 
     ul {

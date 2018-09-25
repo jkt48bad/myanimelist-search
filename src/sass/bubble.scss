@@ -1,0 +1,15 @@
+.bubble {
+    margin: 1px;
+    padding: 4px 6px 6px 6px;
+    background-color: $color-dark;
+    color: $color-font-white;
+    border-radius: 10px;
+    font-size: 0.8571428571428571rem;
+
+    i {
+        color: $color-font-white;
+        position: relative;
+        top: 0px;
+        font-size: 1em;
+    }
+}

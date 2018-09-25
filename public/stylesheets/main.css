@@ -588,20 +588,6 @@ button {
   padding-top: 16px;
   padding-bottom: 16px;
 }
-.search-result .info span {
-  margin: 1px;
-  padding: 4px 6px 6px 6px;
-  background-color: #005ecb;
-  color: #fafafa;
-  border-radius: 10px;
-  font-size: 0.8571428571rem;
-}
-.search-result .info span i {
-  color: #fafafa;
-  position: relative;
-  top: 0px;
-  font-size: 1em;
-}
 
 @media only screen and (max-width: 535px) {
   .search-result {
@@ -725,6 +711,21 @@ button {
 }
 .modal .small {
   max-width: 625px;
+}
+
+.bubble {
+  margin: 1px;
+  padding: 4px 6px 6px 6px;
+  background-color: #005ecb;
+  color: #fafafa;
+  border-radius: 10px;
+  font-size: 0.8571428571rem;
+}
+.bubble i {
+  color: #fafafa;
+  position: relative;
+  top: 0px;
+  font-size: 1em;
 }
 
 body {

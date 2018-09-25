@@ -61,9 +61,9 @@ function renderSearchResults(jsonResponse: any) {
             </div>
         </div>
         <div class="info">
-            <span title="Content Type"><i class="fas fa-tv"></i> ${results[i].type}</span>
-            <span title="Episode Count"><i class="fas fa-list-ol"></i> ${results[i].episodes}</span>
-            <span title="User Rating"><i class="fas fa-star"></i> ${results[i].score}</span>
+            <span class="bubble" title="Content Type"><i class="fas fa-tv"></i> ${results[i].type}</span>
+            <span class="bubble" title="Episode Count"><i class="fas fa-list-ol"></i> ${results[i].episodes}</span>
+            <span class="bubble" title="User Rating"><i class="fas fa-star"></i> ${results[i].score}</span>
         </div>
     </div>`;
         // appends the results and sets their visability to near 0

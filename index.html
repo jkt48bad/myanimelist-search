@@ -12,97 +12,144 @@
     <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/main.css" />
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <script src="js/main.js"></script>
+    <script src="js/require.js" data-main="js/main.js"></script>
 </head>
 
 <body>
-    <div class="search-container">
-        <input type="text" placeholder="Search..." class="search-box" id="search-box">
-        <div class="button-row">
-            <button class="contained-button" id="search-button">Search</button>
-            <button class="text-button" id="advanced-button">Advanced</button>
+    <div class="header">
+        <h6 class="title">MALSearch</h6>
+        <nav>
+            <ul>
+                <li id="more-options-button"><i class="fas fa-ellipsis-v"></i></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="more-options-dropdown" class="dropdown">
+        <ul>
+            <li id="about-option">
+                About
+            </li>
+        </ul>
+    </div>
+    <div class="content">
+        <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-box" id="search-box">
+            <div class="button-row">
+                <button class="contained-button" id="search-button">Search</button>
+                <button class="text-button" id="advanced-button">Advanced</button>
+            </div>
+            <div class="advanced-options" id="advanced-options">
+                <fieldset>
+                    <legend>Content Type</legend>
+                    <label for="tvCheckBox" class="checkbox">
+                        <input type="checkbox" id="tvCheckBox" value="tv" checked>
+                        <span>TV</span>
+                    </label>
+
+                    <label for="ovaCheckBox" class="checkbox">
+                        <input type="checkbox" id="ovaCheckBox" value="ova" checked>
+                        <span>OVA</span>
+                    </label>
+
+                    <label for="movieCheckBox" class="checkbox">
+                        <input type="checkbox" id="movieCheckBox" value="movie" checked>
+                        <span>Movie</span>
+                    </label>
+
+                    <label for="specialCheckBox" class="checkbox">
+                        <input type="checkbox" id="specialCheckBox" value="special" checked>
+                        <span>Special</span>
+                    </label>
+                </fieldset>
+
+
+                <fieldset>
+                    <legend>Status</legend>
+
+                    <label for="airingCheckBox" class="checkbox">
+                        <input type="checkbox" id="airingCheckBox" value="airing" checked>
+                        <span>Airing</span>
+                    </label>
+
+                    <label for="completedCheckBox" class="checkbox">
+                        <input type="checkbox" id="completedCheckBox" value="completed" checked>
+                        <span>Completed</span>
+                    </label>
+
+                    <label for="upcomingCheckBox" class="checkbox">
+                        <input type="checkbox" id="upcomingCheckBox" value="upcoming" checked>
+                        <span>Upcoming</span>
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Rating</legend>
+                    <label for="gCheckBox" class="checkbox">
+                        <input type="checkbox" id="gCheckBox" value="g" checked>
+                        <span>G</span>
+                    </label>
+
+                    <label for="pgCheckBox" class="checkbox">
+                        <input type="checkbox" id="pgCheckBox" value="pg" checked>
+                        <span>PG</span>
+                    </label>
+
+                    <label for="pg13CheckBox" class="checkbox">
+                        <input type="checkbox" id="pg13CheckBox" value="pg13" checked>
+                        <span>PG-13</span>
+                    </label>
+
+                    <label for="r17CheckBox" class="checkbox">
+                        <input type="checkbox" id="r17CheckBox" value="r17" checked>
+                        <span>R-17</span>
+                    </label>
+
+                    <label for="rCheckBox" class="checkbox">
+                        <input type="checkbox" id="rCheckBox" value="r" checked>
+                        <span>R</span>
+                    </label>
+
+                    <label for="rxCheckBox" class="checkbox">
+                        <input type="checkbox" id="rxCheckBox" value="rx" checked>
+                        <span>R-X </span>
+                    </label>
+                </fieldset>
+            </div>
         </div>
-        <div class="advanced-options" id="advanced-options">
-            <fieldset>
-                <legend>Content Type</legend>
-                <label for="tvCheckBox" class="checkbox">
-                    <input type="checkbox" id="tvCheckBox" value="tv" checked>
-                    <span>TV</span>
-                </label>
+        <div class="result-container">
 
-                <label for="ovaCheckBox" class="checkbox">
-                    <input type="checkbox" id="ovaCheckBox" value="ova" checked>
-                    <span>OVA</span>
-                </label>
+        </div>
 
-                <label for="movieCheckBox" class="checkbox">
-                    <input type="checkbox" id="movieCheckBox" value="movie" checked>
-                    <span>Movie</span>
-                </label>
+    </div>
 
-                <label for="specialCheckBox" class="checkbox">
-                    <input type="checkbox" id="specialCheckBox" value="special" checked>
-                    <span>Special</span>
-                </label>
-            </fieldset>
-
-
-            <fieldset>
-                <legend>Status</legend>
-
-                <label for="airingCheckBox" class="checkbox">
-                    <input type="checkbox" id="airingCheckBox" value="airing" checked>
-                    <span>Airing</span>
-                </label>
-
-                <label for="completedCheckBox" class="checkbox">
-                    <input type="checkbox" id="completedCheckBox" value="completed" checked>
-                    <span>Completed</span>
-                </label>
-
-                <label for="upcomingCheckBox" class="checkbox">
-                    <input type="checkbox" id="upcomingCheckBox" value="upcoming" checked>
-                    <span>Upcoming</span>
-                </label>
-            </fieldset>
-
-            <fieldset>
-                <legend>Rating</legend>
-                <label for="gCheckBox" class="checkbox">
-                    <input type="checkbox" id="gCheckBox" value="g" checked>
-                    <span>G</span>
-                </label>
-
-                <label for="pgCheckBox" class="checkbox">
-                    <input type="checkbox" id="pgCheckBox" value="pg" checked>
-                    <span>PG</span>
-                </label>
-
-                <label for="pg13CheckBox" class="checkbox">
-                    <input type="checkbox" id="pg13CheckBox" value="pg13" checked>
-                    <span>PG-13</span>
-                </label>
-
-                <label for="r17CheckBox" class="checkbox">
-                    <input type="checkbox" id="r17CheckBox" value="r17" checked>
-                    <span>R-17</span>
-                </label>
-
-                <label for="rCheckBox" class="checkbox">
-                    <input type="checkbox" id="rCheckBox" value="r" checked>
-                    <span>R</span>
-                </label>
-
-                <label for="rxCheckBox" class="checkbox">
-                    <input type="checkbox" id="rxCheckBox" value="rx" checked>
-                    <span>R-X </span>
-                </label>
-            </fieldset>
+    <div id="modal-background" class="modal-background"></div>
+    <div id="about-modal" class="modal">
+        <div class="modal-container small">
+            <div class="modal-header">
+                <h4>About</h4>
+            </div>
+            <div class="modal-body">
+                <p>Website created by <a href="https://github.com/kdomasze">Kyle Domaszewicz</a>.</p>
+                <p>Powered by <a href="https://myanimelist.net/">MyAnimeList</a> through the <a href="http://jikan.moe/">Jikan
+                        API</a>.</p>
+                <p>Source code available <a href="https://github.com/kdomasze/MAL-Search">here</a>.</p>
+                <p>Feel free to post any comments, questions, bugs, and feature requests in the <a href="https://github.com/kdomasze/MAL-Search/issues">issues
+                        page</a>.</p>
+            </div>
+            <div class="modal-footer">
+                <button class="contained-button" id="close-about-button">Close</button>
+            </div>
         </div>
     </div>
-    <div class="result-container">
 
-    </div>
+    <!--
+    <div class="modal-background"></div>
+    <div class="modal">
+        <div class="container">
+            <h4>Header</h4>
+            <p>content</p>
+        </div>
+    </div>-->
 </body>
 
 </html>

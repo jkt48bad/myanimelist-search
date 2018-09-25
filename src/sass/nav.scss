@@ -1,0 +1,41 @@
+$header-height: 48px;
+
+.header {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+    height: $header-height;
+    background-color: $color-primary;
+    display: flex;
+    justify-content: space-between;
+
+    @include shadow-height(1);
+
+    .title {
+        margin: 8px;
+        align-self: center;
+        color: $color-font-white;
+    }
+
+    nav {
+        margin-right: 8px;
+        color: $color-font-white;
+        align-self: center;
+        ul {
+            list-style: none;
+            li {
+                i {
+                    padding: 6px 12px;
+                    font-size: 1.35rem;
+                }
+            }
+
+            li:hover {
+                cursor: pointer;
+                background-color: $color-light-hover;
+                border-radius: 100%;
+            }
+        }
+    }
+}

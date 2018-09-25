@@ -5,12 +5,14 @@
 @import 'input';
 @import 'button';
 @import 'card';
+@import 'nav';
 
 :focus {
     outline: 0;
 }
 
-body {
+.content {
+    padding-top: $header-height;
     width: 75%;
     margin: 0 auto;
 }

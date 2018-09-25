@@ -16,92 +16,102 @@
 </head>
 
 <body>
-    <div class="search-container">
-        <input type="text" placeholder="Search..." class="search-box" id="search-box">
-        <div class="button-row">
-            <button class="contained-button" id="search-button">Search</button>
-            <button class="text-button" id="advanced-button">Advanced</button>
-        </div>
-        <div class="advanced-options" id="advanced-options">
-            <fieldset>
-                <legend>Content Type</legend>
-                <label for="tvCheckBox" class="checkbox">
-                    <input type="checkbox" id="tvCheckBox" value="tv" checked>
-                    <span>TV</span>
-                </label>
-
-                <label for="ovaCheckBox" class="checkbox">
-                    <input type="checkbox" id="ovaCheckBox" value="ova" checked>
-                    <span>OVA</span>
-                </label>
-
-                <label for="movieCheckBox" class="checkbox">
-                    <input type="checkbox" id="movieCheckBox" value="movie" checked>
-                    <span>Movie</span>
-                </label>
-
-                <label for="specialCheckBox" class="checkbox">
-                    <input type="checkbox" id="specialCheckBox" value="special" checked>
-                    <span>Special</span>
-                </label>
-            </fieldset>
-
-
-            <fieldset>
-                <legend>Status</legend>
-
-                <label for="airingCheckBox" class="checkbox">
-                    <input type="checkbox" id="airingCheckBox" value="airing" checked>
-                    <span>Airing</span>
-                </label>
-
-                <label for="completedCheckBox" class="checkbox">
-                    <input type="checkbox" id="completedCheckBox" value="completed" checked>
-                    <span>Completed</span>
-                </label>
-
-                <label for="upcomingCheckBox" class="checkbox">
-                    <input type="checkbox" id="upcomingCheckBox" value="upcoming" checked>
-                    <span>Upcoming</span>
-                </label>
-            </fieldset>
-
-            <fieldset>
-                <legend>Rating</legend>
-                <label for="gCheckBox" class="checkbox">
-                    <input type="checkbox" id="gCheckBox" value="g" checked>
-                    <span>G</span>
-                </label>
-
-                <label for="pgCheckBox" class="checkbox">
-                    <input type="checkbox" id="pgCheckBox" value="pg" checked>
-                    <span>PG</span>
-                </label>
-
-                <label for="pg13CheckBox" class="checkbox">
-                    <input type="checkbox" id="pg13CheckBox" value="pg13" checked>
-                    <span>PG-13</span>
-                </label>
-
-                <label for="r17CheckBox" class="checkbox">
-                    <input type="checkbox" id="r17CheckBox" value="r17" checked>
-                    <span>R-17</span>
-                </label>
-
-                <label for="rCheckBox" class="checkbox">
-                    <input type="checkbox" id="rCheckBox" value="r" checked>
-                    <span>R</span>
-                </label>
-
-                <label for="rxCheckBox" class="checkbox">
-                    <input type="checkbox" id="rxCheckBox" value="rx" checked>
-                    <span>R-X </span>
-                </label>
-            </fieldset>
-        </div>
+    <div class="header">
+        <h6 class="title">MALSearch</h6>
+        <nav>
+            <ul>
+                <li><i class="fas fa-ellipsis-v"></i></li>
+            </ul>
+        </nav>
     </div>
-    <div class="result-container">
+    <div class="content">
+        <div class="search-container">
+            <input type="text" placeholder="Search..." class="search-box" id="search-box">
+            <div class="button-row">
+                <button class="contained-button" id="search-button">Search</button>
+                <button class="text-button" id="advanced-button">Advanced</button>
+            </div>
+            <div class="advanced-options" id="advanced-options">
+                <fieldset>
+                    <legend>Content Type</legend>
+                    <label for="tvCheckBox" class="checkbox">
+                        <input type="checkbox" id="tvCheckBox" value="tv" checked>
+                        <span>TV</span>
+                    </label>
 
+                    <label for="ovaCheckBox" class="checkbox">
+                        <input type="checkbox" id="ovaCheckBox" value="ova" checked>
+                        <span>OVA</span>
+                    </label>
+
+                    <label for="movieCheckBox" class="checkbox">
+                        <input type="checkbox" id="movieCheckBox" value="movie" checked>
+                        <span>Movie</span>
+                    </label>
+
+                    <label for="specialCheckBox" class="checkbox">
+                        <input type="checkbox" id="specialCheckBox" value="special" checked>
+                        <span>Special</span>
+                    </label>
+                </fieldset>
+
+
+                <fieldset>
+                    <legend>Status</legend>
+
+                    <label for="airingCheckBox" class="checkbox">
+                        <input type="checkbox" id="airingCheckBox" value="airing" checked>
+                        <span>Airing</span>
+                    </label>
+
+                    <label for="completedCheckBox" class="checkbox">
+                        <input type="checkbox" id="completedCheckBox" value="completed" checked>
+                        <span>Completed</span>
+                    </label>
+
+                    <label for="upcomingCheckBox" class="checkbox">
+                        <input type="checkbox" id="upcomingCheckBox" value="upcoming" checked>
+                        <span>Upcoming</span>
+                    </label>
+                </fieldset>
+
+                <fieldset>
+                    <legend>Rating</legend>
+                    <label for="gCheckBox" class="checkbox">
+                        <input type="checkbox" id="gCheckBox" value="g" checked>
+                        <span>G</span>
+                    </label>
+
+                    <label for="pgCheckBox" class="checkbox">
+                        <input type="checkbox" id="pgCheckBox" value="pg" checked>
+                        <span>PG</span>
+                    </label>
+
+                    <label for="pg13CheckBox" class="checkbox">
+                        <input type="checkbox" id="pg13CheckBox" value="pg13" checked>
+                        <span>PG-13</span>
+                    </label>
+
+                    <label for="r17CheckBox" class="checkbox">
+                        <input type="checkbox" id="r17CheckBox" value="r17" checked>
+                        <span>R-17</span>
+                    </label>
+
+                    <label for="rCheckBox" class="checkbox">
+                        <input type="checkbox" id="rCheckBox" value="r" checked>
+                        <span>R</span>
+                    </label>
+
+                    <label for="rxCheckBox" class="checkbox">
+                        <input type="checkbox" id="rxCheckBox" value="rx" checked>
+                        <span>R-X </span>
+                    </label>
+                </fieldset>
+            </div>
+        </div>
+        <div class="result-container">
+
+        </div>
     </div>
 </body>
 

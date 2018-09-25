@@ -7,8 +7,11 @@ define(["require", "exports", "./search"], function (require, exports, search) {
     $('document').ready(function () {
         var $advancedOptions = $('#advanced-options');
         var $advancedButton = $('#advanced-button');
+        var $moreOptionsDropdown = $('#more-options-dropdown');
         var pageNumber = 1;
+        var darkMode = false;
         $advancedOptions.hide();
+        $moreOptionsDropdown.hide();
         // toggles advanced options menu display
         $advancedButton.on('click', function () {
             $advancedOptions.slideToggle(200);
@@ -27,6 +30,31 @@ define(["require", "exports", "./search"], function (require, exports, search) {
             pageNumber = 1;
             $('.result-container').html('');
             search.getSearchResults(pageNumber.toString());
+        });
+        // shows options drop down menu
+        $('#more-options-button').on('click', function () {
+            $moreOptionsDropdown.fadeToggle(100);
+        });
+        // shows about modal
+        $('#about-option').on('click', function () {
+            // hides dropdown menu
+            $moreOptionsDropdown.fadeOut(100);
+            // TODO: implement modal and display here
+            alert('display about');
+        });
+        // toggle dark mode
+        $('#dark-mode-option').on('click', function (event) {
+            // hides dropdown menu
+            $moreOptionsDropdown.fadeOut(100);
+            // TODO: implement dark mode
+            if (darkMode) {
+                $(event.target).text('Enable Dark Mode');
+                darkMode = false;
+            }
+            else {
+                $(event.target).text('Disable Dark Mode');
+                darkMode = true;
+            }
         });
         // auto scroll
         $(window).scroll(function () {

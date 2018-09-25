@@ -49,6 +49,12 @@ body {
     letter-spacing: 0.5;
 }
 
+li {
+    font-weight: $weight-regular;
+    font-size: 1rem;
+    letter-spacing: 0.75;
+}
+
 button {
     font-weight: $weight-medium;
     font-size: 0.875rem;

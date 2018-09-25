@@ -7,10 +7,13 @@ import search = require('./search');
 $('document').ready(() => {
     const $advancedOptions: JQuery<HTMLElement> = $('#advanced-options');
     const $advancedButton: JQuery<HTMLElement> = $('#advanced-button');
+    const $moreOptionsDropdown: JQuery<HTMLElement> = $('#more-options-dropdown');
 
     let pageNumber: number = 1;
+    let darkMode: boolean = false;
 
     $advancedOptions.hide();
+    $moreOptionsDropdown.hide();
 
     // toggles advanced options menu display
     $advancedButton.on('click', () => {
@@ -32,6 +35,33 @@ $('document').ready(() => {
         pageNumber = 1;
         $('.result-container').html('');
         search.getSearchResults(pageNumber.toString());
+    });
+
+    // shows options drop down menu
+    $('#more-options-button').on('click', () => {
+        $moreOptionsDropdown.fadeToggle(100);
+    });
+
+    // shows about modal
+    $('#about-option').on('click', () => {
+        // hides dropdown menu
+        $moreOptionsDropdown.fadeOut(100);
+        // TODO: implement modal and display here
+        alert('display about');
+    });
+
+    // toggle dark mode
+    $('#dark-mode-option').on('click', (event) => {
+        // hides dropdown menu
+        $moreOptionsDropdown.fadeOut(100);
+        // TODO: implement dark mode
+        if (darkMode) {
+            $(event.target).text('Enable Dark Mode');
+            darkMode = false;
+        } else {
+            $(event.target).text('Disable Dark Mode');
+            darkMode = true;
+        }
     });
 
     // auto scroll

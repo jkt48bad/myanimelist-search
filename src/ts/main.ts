@@ -60,11 +60,6 @@ $('document').ready(() => {
         $aboutModal.fadeToggle(200);
     });
 
-    $modalBackground.on('click', () => {
-        $modalBackground.fadeToggle(200);
-        $aboutModal.fadeToggle(200);
-    });
-
     // auto scroll
     $(window).scroll(() => {
         // add 1 to handle rounding errors

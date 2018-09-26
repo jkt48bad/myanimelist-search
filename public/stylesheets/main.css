@@ -693,7 +693,9 @@ button {
   -moz-box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
   padding: 8px;
-  width: 90%;
+  width: 85%;
+  height: 90%;
+  max-width: 911px;
   display: flex;
   flex-direction: column;
 }
@@ -701,8 +703,14 @@ button {
   margin: 0;
   margin-bottom: 8px;
 }
+.modal .modal-container .modal-body {
+  height: 90%;
+}
 .modal .modal-container .modal-body p {
   padding-bottom: 8px;
+}
+.modal .modal-container .modal-body p:last-of-type {
+  padding-bottom: 0;
 }
 .modal .modal-container .modal-footer {
   margin-top: auto;
@@ -715,7 +723,7 @@ button {
 
 .bubble {
   margin: 1px;
-  padding: 4px 6px 6px 6px;
+  padding: 6px 6px 6px 6px;
   background-color: #005ecb;
   color: #fafafa;
   border-radius: 10px;
@@ -768,6 +776,81 @@ body {
   flex-wrap: wrap;
 }
 
+.modal-body {
+  overflow: auto;
+}
+.modal-body .anime-content {
+  display: flex;
+  flex-direction: row;
+}
+.modal-body .anime-content .main-info {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+.modal-body .anime-content .main-info h4 {
+  margin: 0;
+  padding-bottom: 8px;
+}
+.modal-body .anime-content .main-info h6 {
+  margin: 0;
+  padding-bottom: 8px;
+}
+.modal-body .anime-content .main-info .description {
+  border-top: 1.25px solid #a3a3a3;
+  border-bottom: 1.25px solid #a3a3a3;
+  padding: 8px 0;
+  margin-bottom: 8px;
+}
+.modal-body .anime-content .main-info .background {
+  border-bottom: 1.25px solid #a3a3a3;
+  padding: 8px 0;
+  margin-bottom: 8px;
+}
+.modal-body .anime-content .main-info .themes {
+  display: flex;
+  flex-direction: column;
+}
+.modal-body .anime-content .main-info .themes .themes-details {
+  display: flex;
+  flex-direction: row;
+  flex-flow: wrap;
+}
+.modal-body .anime-content .main-info .themes .themes-details .opening div {
+  display: flex;
+  flex-flow: wrap;
+}
+.modal-body .anime-content .main-info .themes .themes-details .closing div {
+  display: flex;
+  flex-flow: wrap;
+}
+.modal-body .anime-content .main-info .themes .themes-details div {
+  padding-right: 8px;
+  padding-bottom: 8px;
+}
+.modal-body .anime-content .main-info .related-anime ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.modal-body .anime-content .info {
+  padding-bottom: 12px;
+  display: flex;
+  flex-flow: wrap;
+}
+.modal-body .anime-content .info span {
+  margin-right: 4px;
+}
+.modal-body .anime-content h5 {
+  margin: 0;
+  padding-bottom: 8px;
+}
+.modal-body .anime-content .poster {
+  max-width: 225px;
+  max-height: 350px;
+  padding-right: 8px;
+}
+
 .hidden {
   visibility: hidden;
   opacity: 0;
@@ -777,6 +860,24 @@ body {
 .visible {
   opacity: 1;
   transition: opacity 2s linear;
+}
+
+@media only screen and (max-width: 425px) {
+  .modal-body .anime-content {
+    flex-flow: wrap-reverse;
+  }
+  .modal-body .anime-content .main-info .description {
+    max-height: 100%;
+  }
+  .modal-body .anime-content .header-content {
+    width: 100%;
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .modal-body .anime-content .header-content .poster {
+    align-self: center;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

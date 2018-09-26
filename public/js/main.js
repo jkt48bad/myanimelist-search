@@ -51,10 +51,6 @@ define(["require", "exports", "./search"], function (require, exports, search) {
             $modalBackground.fadeToggle(200);
             $aboutModal.fadeToggle(200);
         });
-        $modalBackground.on('click', function () {
-            $modalBackground.fadeToggle(200);
-            $aboutModal.fadeToggle(200);
-        });
         // auto scroll
         $(window).scroll(function () {
             // add 1 to handle rounding errors

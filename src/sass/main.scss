@@ -50,6 +50,104 @@ body {
     flex-wrap: wrap;
 }
 
+.modal-body {
+    overflow: auto;
+    .anime-content {
+        display: flex;
+        flex-direction: row;
+
+        .main-info {
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+
+            h4 {
+                margin: 0;
+                padding-bottom: 8px;
+            }
+
+            h6 {
+                margin: 0;
+                padding-bottom: 8px;
+            }
+
+            .description {
+                border-top: 1.25px solid #a3a3a3;
+                border-bottom: 1.25px solid #a3a3a3;
+
+                padding: 8px 0;
+                margin-bottom: 8px;
+            }
+
+            .background {
+                border-bottom: 1.25px solid #a3a3a3;
+
+                padding: 8px 0;
+                margin-bottom: 8px;
+            }
+
+            .themes {
+                display: flex;
+                flex-direction: column;
+
+                .themes-details {
+                    display: flex;
+                    flex-direction: row;
+                    flex-flow: wrap;
+
+                    .opening div {
+                        display: flex;
+                        flex-flow: wrap;
+                    }
+
+                    .closing div {
+                        display: flex;
+                        flex-flow: wrap;
+                    }
+
+                    div {
+                        padding-right: 8px;
+                        padding-bottom: 8px;
+                    }
+                }
+            }
+
+            .related-anime {
+                ul {
+                    list-style: none;
+                    padding: 0;
+                    margin: 0;
+
+                    li {
+                    }
+                }
+            }
+        }
+
+        .info {
+            padding-bottom: 12px;
+
+            display: flex;
+            flex-flow: wrap;
+
+            span {
+                margin-right: 4px;
+            }
+        }
+
+        h5 {
+            margin: 0;
+            padding-bottom: 8px;
+        }
+
+        .poster {
+            max-width: 225px;
+            max-height: 350px;
+            padding-right: 8px;
+        }
+    }
+}
+
 .hidden {
     visibility: hidden;
     opacity: 0;
@@ -59,4 +157,28 @@ body {
 .visible {
     opacity: 1;
     transition: opacity 2s linear;
+}
+
+@media only screen and (max-width: 425px) {
+    .modal-body {
+        .anime-content {
+            flex-flow: wrap-reverse;
+            .main-info {
+                .description {
+                    max-height: 100%;
+                }
+            }
+
+            .header-content {
+                width: 100%;
+                padding-top: 8px;
+                display: flex;
+                flex-direction: column-reverse;
+
+                .poster {
+                    align-self: center;
+                }
+            }
+        }
+    }
 }

@@ -13,6 +13,126 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="js/require.js" data-main="js/main.js"></script>
+
+    <script id="template-anime-card" type="text/template">
+        <div id="{{id}}" class="material-card search-result">
+            <div class="top-section">
+                <div class="image">
+                    <img src="{{image_url}}"
+                        alt="{{title}}">
+                </div>
+                <div class="details">
+                    <h2>{{title}}</h2>
+                    <p>{{synopsis}}</p>
+                </div>
+            </div>
+            <div class="info">
+                <span class="bubble" title="Content Type"><i class="fas fa-tv"></i> {{type}}</span>
+                <span class="bubble" title="Episode Count"><i class="fas fa-list-ol"></i> {{episodes}}</span>
+                <span class="bubble" title="User Rating"><i class="fas fa-star"></i> {{score}}</span>
+            </div>
+        </div>
+    </script>
+
+    <script id="template-anime-modal" type="text/template">
+        <div id="{{id}}-modal" class="modal">
+            <div class="modal-container">
+                <div class="modal-body">
+                    <div class="anime-content">
+                        <div class="header-content">
+                            <img class="poster" src="{{image_url}}">
+            
+                            <div>
+                                <h5>Score</h5>
+                                <div class="info">
+                                    <span class="bubble" title="Score"><i class="fas fa-star"></i> {{score}}</span>
+                                    <span class="bubble" title="Rank"><i class="fas fa-arrow-up"></i> {{rank}}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h5>Title</h5>
+                                <div class="info">
+                                    <span class="bubble" title="English"><i class="fas fa-language"></i> {{title_english}}</span>
+                                    <span class="bubble" title="Japanese"><i class="fas fa-language"></i> {{title_japanese}}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h5>Aired</h5>
+                                <div class="info">
+                                    <span class="bubble" title="From"><i class="fas fa-hourglass-start"></i> {{aired_start}}</span>
+                                    <span class="bubble" title="To"><i class="fas fa-hourglass-end"></i> {{aired_end}}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h5>Genres</h5>
+                                <div class="info">
+                                    {{genres}}
+                                </div>
+                            </div>
+                            <div>
+                                <h5>Studios</h5>
+                                <div class="info">
+                                    {{studios}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-info">
+                            <h4>{{title}}</h4>
+                            <div class="info">
+                                <span class="bubble" title="Content Type"><i class="fas fa-tv"></i> {{type}}</span>
+                                <span class="bubble" title="Episode Count"><i class="fas fa-list-ol"></i> {{episodes}}</span>
+                                <span class="bubble" title="Premiere Season"><i class="far fa-calendar"></i> {{premiered}}</span>
+                                <span class="bubble" title="Runtime"><i class="far fa-clock"></i> {{duration}}</span>
+                                <span class="bubble" title="Rating"><i class="far fa-eye"></i> {{rating}}</span>
+                            </div>
+                            <div class="description">
+                                <p>{{synopsis}}</p>
+                            </div>
+                            <div class="background">
+                                <p>{{background}}</p>
+                            </div>
+                            <div class="themes">
+                                <h5>Themes</h5>
+                                <div class="themes-details">
+                                    <div class="opening">
+                                        <h6>Opening</h6>
+                                        <div>
+                                            {{opening_themes}}
+                                        </div>
+                                    </div>
+                                    <div class="closing">
+                                        <h6>Ending</h6>
+                                        <div>
+                                            {{ending_themes}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="related-anime">
+                                <h5>Related Anime</h5>
+                                <ul>
+                                    {{related_anime}}
+                                </ul>
+                            </div>
+            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="contained-button" id="close-{{id}}-button">Close</button>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <script id="template-bubble" type="text/template">
+        <span class="bubble">{{text}}</span>
+    </script>
+
+    <script id="template-related-anime" type="text/template">
+        <li>{{type}}: <a href="">{{name}}</a></li>
+    </script>
 </head>
 
 <body>
@@ -156,49 +276,7 @@
         <div class="result-container">
 
         </div>
-        <div id="X-background" class="modal-background"></div>
-        <div id="X-modal" class="modal">
-            <div class="modal-container small">
-                <div class="modal-body">
-                    <div class="main-info">
-                        <img src="https://myanimelist.cdn-dena.com/images/anime/2/73249.jpg">
-                        <h4>Fate/Zero</h4>
-                        <div class="info">
-                            <span class="bubble" title="Content Type"><i class="fas fa-tv"></i> TV</span>
-                            <span class="bubble" title="Episode Count"><i class="fas fa-list-ol"></i> 12</span>
-                            <span class="bubble" title="Premiere Season"><i class="far fa-calendar"></i> Fall 2011</span>
-                            <span class="bubble" title="Studio"><i class="fas fa-users"></i> ufotable</span>
-                            <span class="bubble" title="Runtime"><i class="far fa-clock"></i> 28 min. per ep.</span>
-                            <span class="bubble" title="Rating"><i class="far fa-eye"></i> R - 17+ (violence &
-                                profanity)</span>
-                        </div>
-                        <p>With the promise of granting any wish, the omnipotent Holy Grail triggered three wars in the
-                            past, each too cruel and fierce to leave a victor. In spite of that, the wealthy Einzbern
-                            family is confident that the Fourth Holy Grail War will be different; namely, with a vessel
-                            of the Holy Grail now in their grasp. Solely for this reason, the much hated "Magus Killer"
-                            Kiritsugu Emiya is hired by the Einzberns, with marriage to their only daughter Irisviel as
-                            binding contract.<br />
 
-                            Kiritsugu now stands at the center of a cutthroat game of survival, facing off against six
-                            other participants, each armed with an ancient familiar, and fueled by unique desires and
-                            ideals. Accompanied by his own familiar, Saber, the notorious mercenary soon finds his
-                            greatest opponent in Kirei Kotomine, a priest who seeks salvation from the emptiness within
-                            himself in pursuit of Kiritsugu.<br />
-
-                            Based on the light novel written by Gen Urobuchi, Fate/Zero depicts the events of the
-                            Fourth Holy Grail War—10 years prior to Fate/stay night. Witness a battle royale in which
-                            no one is guaranteed to survive.
-                        </p>
-                        <div>
-                            <h5>Genres</h5>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button class="contained-button" id="close-about-button">Close</button>
-                </div>
-            </div>
-        </div>
 
     </div>
 </body>

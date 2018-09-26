@@ -3,6 +3,7 @@
  */
 
 import advancedOptions = require('./advancedOptions');
+import details = require('./details');
 
 /**
  * Interface for search results from Jikan.
@@ -47,25 +48,17 @@ function buildSearchUrl(page: string): string {
  */
 function renderSearchResults(jsonResponse: any) {
     const results: SearchResult[] = jsonResponse.results;
+    const template: string = $('#template-anime-card').html();
 
     for (let i: number = 0; i < results.length; i += 1) {
-        const content: string = `<div class="material-card search-result">
-        <div class="top-section">
-            <div class="image">
-                <img src="${results[i].image_url}"
-                    alt="${results[i].title}">
-            </div>
-            <div class="details">
-                <h2>${results[i].title}</h2>
-                <p>${results[i].synopsis}</p>
-            </div>
-        </div>
-        <div class="info">
-            <span class="bubble" title="Content Type"><i class="fas fa-tv"></i> ${results[i].type}</span>
-            <span class="bubble" title="Episode Count"><i class="fas fa-list-ol"></i> ${results[i].episodes}</span>
-            <span class="bubble" title="User Rating"><i class="fas fa-star"></i> ${results[i].score}</span>
-        </div>
-    </div>`;
+        const content = template
+            .replace(/{{id}}/g, results[i].mal_id.toString())
+            .replace(/{{title}}/g, results[i].title)
+            .replace(/{{image_url}}/g, results[i].image_url)
+            .replace(/{{synopsis}}/g, results[i].synopsis)
+            .replace(/{{type}}/g, results[i].type)
+            .replace(/{{episodes}}/g, results[i].episodes.toString())
+            .replace(/{{score}}/g, results[i].score.toString());
         // appends the results and sets their visability to near 0
         $('.result-container').append($(content).fadeTo(0, 0.01));
     }
@@ -78,6 +71,15 @@ function renderSearchResults(jsonResponse: any) {
                 .delay(50 * index)
                 .fadeTo(100, 1);
         });
+
+    $('.search-result').on('click', (event) => {
+        const animeID: number = Number.parseFloat($(event.target)
+            .closest('.search-result')
+            .attr('id') as string);
+
+        console.log(animeID);
+        details.getDetailedResults(animeID);
+    });
 }
 
 /**

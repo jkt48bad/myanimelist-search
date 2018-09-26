@@ -29,7 +29,10 @@
         @include shadow-height(3);
         padding: 8px;
 
-        width: 90%;
+        width: 85%;
+        height: 90%;
+
+        max-width: 911px;
 
         display: flex;
         flex-direction: column;
@@ -45,6 +48,10 @@
             p {
                 padding-bottom: 8px;
             }
+            p:last-of-type {
+                padding-bottom: 0;
+            }
+            height: 90%;
         }
 
         .modal-footer {

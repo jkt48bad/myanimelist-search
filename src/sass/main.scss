@@ -42,6 +42,14 @@ body {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
+    flex-direction: column;
+
+    .top-options,
+    .sub-options {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
 }
 
 .result-container {

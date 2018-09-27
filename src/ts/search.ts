@@ -37,9 +37,11 @@ function buildSearchUrl(page: string): string {
     );
     const statusParam: string = advancedOptions.buildUrlParameter(advancedOptions.params.status);
     const ratingParam: string = advancedOptions.buildUrlParameter(advancedOptions.params.rating);
+    const genreParam: string = advancedOptions.buildUrlParameter(advancedOptions.params.genre);
+    const scoreParam: string = advancedOptions.buildUrlParameter(advancedOptions.params.score);
     const pageParam: string = `&page=${page}`;
 
-    return `${baseUrl}${searchParam}${searchValue}${contentTypeParam}${statusParam}${ratingParam}${pageParam}`;
+    return `${baseUrl}${searchParam}${searchValue}${contentTypeParam}${statusParam}${ratingParam}${genreParam}${scoreParam}${pageParam}`;
 }
 
 /**

@@ -14,8 +14,10 @@ define(["require", "exports", "./advancedOptions", "./details"], function (requi
         var contentTypeParam = advancedOptions.buildUrlParameter(advancedOptions.params.content);
         var statusParam = advancedOptions.buildUrlParameter(advancedOptions.params.status);
         var ratingParam = advancedOptions.buildUrlParameter(advancedOptions.params.rating);
+        var genreParam = advancedOptions.buildUrlParameter(advancedOptions.params.genre);
+        var scoreParam = advancedOptions.buildUrlParameter(advancedOptions.params.score);
         var pageParam = "&page=" + page;
-        return "" + baseUrl + searchParam + searchValue + contentTypeParam + statusParam + ratingParam + pageParam;
+        return "" + baseUrl + searchParam + searchValue + contentTypeParam + statusParam + ratingParam + genreParam + scoreParam + pageParam;
     }
     /**
      * Renders the search results to the page

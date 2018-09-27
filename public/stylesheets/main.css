@@ -833,6 +833,11 @@ body {
   padding: 0;
   margin: 0;
 }
+.modal-body .anime-content .main-info .related-anime ul li a {
+  color: #448aff;
+  text-decoration: underline;
+  cursor: pointer;
+}
 .modal-body .anime-content .info {
   padding-bottom: 12px;
   display: flex;

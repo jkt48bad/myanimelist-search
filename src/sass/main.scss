@@ -119,6 +119,11 @@ body {
                     margin: 0;
 
                     li {
+                        a {
+                            color: #448aff;
+                            text-decoration: underline;
+                            cursor: pointer;
+                        }
                     }
                 }
             }

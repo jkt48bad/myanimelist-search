@@ -31,9 +31,15 @@ define(["require", "exports"], function (require, exports) {
         for (var property in result.related) {
             if (result.related.hasOwnProperty(property)) {
                 for (var i = 0; i < result.related[property].length; i += 1) {
+                    var entry = result.related[property][i];
+                    console.log(entry.type);
+                    if (entry.type === 'novel' || entry.type === 'manga') {
+                        continue;
+                    }
                     relatedAnimeResult += relatedAnimeTemplate
+                        .replace(/{{related_id}}/g, entry.mal_id.toString())
                         .replace(/{{type}}/g, property)
-                        .replace(/{{name}}/g, result.related[property][i].name);
+                        .replace(/{{name}}/g, entry.name);
                 }
             }
         }
@@ -41,8 +47,8 @@ define(["require", "exports"], function (require, exports) {
             .replace(/{{id}}/g, result.mal_id.toString())
             .replace(/{{title}}/g, result.title)
             .replace(/{{image_url}}/g, result.image_url)
-            .replace(/{{score}}/g, result.score.toString())
-            .replace(/{{rank}}/g, result.rank.toString())
+            .replace(/{{score}}/g, result.score === null ? 'N/A' : result.score.toString())
+            .replace(/{{rank}}/g, result.score === null ? 'N/A' : result.rank.toString())
             .replace(/{{title_english}}/g, result.title_english)
             .replace(/{{title_japanese}}/g, result.title_japanese)
             .replace(/{{aired_start}}/g, dateResult[0])
@@ -78,6 +84,13 @@ define(["require", "exports"], function (require, exports) {
             $("#modal-background")
                 .delay(100)
                 .remove();
+        });
+        $("#" + result.mal_id + "-modal")
+            .find('.related-anime-entry')
+            .on('click', function (event) {
+            var id = Number.parseFloat($(event.target).attr('id'));
+            getDetailedResults(id);
+            $("#close-" + result.mal_id + "-button").click();
         });
     }
     /**

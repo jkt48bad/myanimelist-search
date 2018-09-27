@@ -860,6 +860,10 @@ body {
   padding-right: 8px;
 }
 
+.modal-footer button {
+  margin-left: 0;
+}
+
 .hidden {
   visibility: hidden;
   opacity: 0;

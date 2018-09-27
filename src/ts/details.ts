@@ -3,6 +3,7 @@
  */
 interface DetailResult {
     mal_id: number;
+    url: string;
     image_url: string;
     title: string;
     title_english: string;
@@ -157,6 +158,10 @@ function renderDetailResult(jsonResponse: any) {
         $(`#modal-background`)
             .delay(100)
             .remove();
+    });
+
+    $(`#mal-button`).on('click', () => {
+        window.open(result.url, '_blank');
     });
 
     $(`#${result.mal_id}-modal`)

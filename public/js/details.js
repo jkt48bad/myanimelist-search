@@ -84,6 +84,9 @@ define(["require", "exports"], function (require, exports) {
                 .delay(100)
                 .remove();
         });
+        $("#mal-button").on('click', function () {
+            window.open(result.url, '_blank');
+        });
         $("#" + result.mal_id + "-modal")
             .find('.related-anime-entry')
             .on('click', function (event) {

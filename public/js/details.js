@@ -32,7 +32,6 @@ define(["require", "exports"], function (require, exports) {
             if (result.related.hasOwnProperty(property)) {
                 for (var i = 0; i < result.related[property].length; i += 1) {
                     var entry = result.related[property][i];
-                    console.log(entry.type);
                     if (entry.type === 'novel' || entry.type === 'manga') {
                         continue;
                     }
@@ -52,7 +51,7 @@ define(["require", "exports"], function (require, exports) {
             .replace(/{{title_english}}/g, result.title_english)
             .replace(/{{title_japanese}}/g, result.title_japanese)
             .replace(/{{aired_start}}/g, dateResult[0])
-            .replace(/{{aired_end}}/g, dateResult[1])
+            .replace(/{{aired_end}}/g, dateResult[1] === undefined ? dateResult[0] : dateResult[1])
             .replace(/{{genres}}/g, genreResult)
             .replace(/{{studios}}/g, studiosResult)
             .replace(/{{synopsis}}/g, result.synopsis)
@@ -62,7 +61,7 @@ define(["require", "exports"], function (require, exports) {
             .replace(/{{related_anime}}/g, relatedAnimeResult)
             .replace(/{{type}}/g, result.type)
             .replace(/{{episodes}}/g, result.episodes.toString())
-            .replace(/{{premiered}}/g, result.premiered)
+            .replace(/{{premiered}}/g, result.premiered === null ? 'N/A' : result.premiered)
             .replace(/{{duration}}/g, result.duration)
             .replace(/{{rating}}/g, result.rating);
         var $backgroundModal = $($('#template-modal-background').html());

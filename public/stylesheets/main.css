@@ -787,6 +787,7 @@ body {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
+  padding-left: 8px;
 }
 .modal-body .anime-content .main-info h4 {
   margin: 0;
@@ -850,7 +851,10 @@ body {
   margin: 0;
   padding-bottom: 8px;
 }
-.modal-body .anime-content .poster {
+.modal-body .anime-content .header-content {
+  max-width: 225px;
+}
+.modal-body .anime-content .header-content .poster {
   max-width: 225px;
   max-height: 350px;
   padding-right: 8px;

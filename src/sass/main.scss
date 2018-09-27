@@ -61,6 +61,8 @@ body {
             flex-direction: column;
             flex-wrap: wrap;
 
+            padding-left: 8px;
+
             h4 {
                 margin: 0;
                 padding-bottom: 8px;
@@ -145,10 +147,14 @@ body {
             padding-bottom: 8px;
         }
 
-        .poster {
+        .header-content {
             max-width: 225px;
-            max-height: 350px;
-            padding-right: 8px;
+
+            .poster {
+                max-width: 225px;
+                max-height: 350px;
+                padding-right: 8px;
+            }
         }
     }
 }

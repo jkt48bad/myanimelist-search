@@ -59,18 +59,23 @@ define(["require", "exports"], function (require, exports) {
             .replace(/{{premiered}}/g, result.premiered)
             .replace(/{{duration}}/g, result.duration)
             .replace(/{{rating}}/g, result.rating);
-        var contentOut = $(content);
+        var $backgroundModal = $($('#template-modal-background').html());
+        var $contentOut = $(content);
         if (result.background === null) {
-            console.log(contentOut.find('.background'));
-            contentOut.find('.background')[0].remove();
+            console.log($contentOut.find('.background'));
+            $contentOut.find('.background')[0].remove();
         }
-        $('body').append(contentOut.fadeTo(0, 0.01));
-        $('#modal-background').fadeIn(100);
+        $('body').append($backgroundModal.fadeTo(0, 0.01));
+        $('body').append($contentOut.fadeTo(0, 0.01));
+        $('#modal-background').fadeTo(100, 1);
         $("#" + result.mal_id + "-modal").fadeTo(100, 1);
         $("#close-" + result.mal_id + "-button").on('click', function () {
-            $('#modal-background').fadeOut(100);
-            $("#" + result.mal_id + "-modal").fadeOut(100);
+            $('#modal-background').fadeTo(100, 0.01);
+            $("#" + result.mal_id + "-modal").fadeTo(100, 0.01);
             $("#" + result.mal_id + "-modal")
+                .delay(100)
+                .remove();
+            $("#modal-background")
                 .delay(100)
                 .remove();
         });

@@ -8,16 +8,12 @@ $('document').ready(() => {
     const $advancedOptions: JQuery<HTMLElement> = $('#advanced-options');
     const $advancedButton: JQuery<HTMLElement> = $('#advanced-button');
     const $moreOptionsDropdown: JQuery<HTMLElement> = $('#more-options-dropdown');
-    const $aboutModal: JQuery<HTMLElement> = $('#about-modal');
-    const $modalBackground: JQuery<HTMLElement> = $('#modal-background');
 
     let pageNumber: number = 1;
     const darkMode: boolean = false;
 
     $advancedOptions.hide();
     $moreOptionsDropdown.hide();
-    $aboutModal.hide();
-    $modalBackground.hide();
 
     // toggles advanced options menu display
     $advancedButton.on('click', () => {
@@ -50,14 +46,28 @@ $('document').ready(() => {
     $('#about-option').on('click', () => {
         // hides dropdown menu
         $moreOptionsDropdown.fadeOut(100);
-        // display modal
-        $modalBackground.fadeToggle(200);
-        $aboutModal.fadeToggle(200);
-    });
 
-    $('#close-about-button').on('click', () => {
-        $modalBackground.fadeToggle(200);
-        $aboutModal.fadeToggle(200);
+        // display modal
+        const $aboutModal: JQuery<HTMLElement> = $($('#template-about').html());
+        const $backgroundModal: JQuery<HTMLElement> = $($('#template-modal-background').html());
+
+        $('body').append($backgroundModal.fadeTo(0, 0.01));
+        $('body').append($aboutModal.fadeTo(0, 0.01));
+
+        $('#modal-background').fadeTo(100, 1);
+        $('#about-modal').fadeTo(100, 1);
+
+        $('#close-about-button').on('click', () => {
+            $('#modal-background').fadeTo(100, 0.01);
+            $('#about-modal').fadeTo(100, 0.01);
+
+            $('#modal-background')
+                .delay(200)
+                .remove();
+            $('#about-modal')
+                .delay(200)
+                .remove();
+        });
     });
 
     // auto scroll

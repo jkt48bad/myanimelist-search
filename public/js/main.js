@@ -8,14 +8,10 @@ define(["require", "exports", "./search"], function (require, exports, search) {
         var $advancedOptions = $('#advanced-options');
         var $advancedButton = $('#advanced-button');
         var $moreOptionsDropdown = $('#more-options-dropdown');
-        var $aboutModal = $('#about-modal');
-        var $modalBackground = $('#modal-background');
         var pageNumber = 1;
         var darkMode = false;
         $advancedOptions.hide();
         $moreOptionsDropdown.hide();
-        $aboutModal.hide();
-        $modalBackground.hide();
         // toggles advanced options menu display
         $advancedButton.on('click', function () {
             $advancedOptions.slideToggle(200);
@@ -44,12 +40,22 @@ define(["require", "exports", "./search"], function (require, exports, search) {
             // hides dropdown menu
             $moreOptionsDropdown.fadeOut(100);
             // display modal
-            $modalBackground.fadeToggle(200);
-            $aboutModal.fadeToggle(200);
-        });
-        $('#close-about-button').on('click', function () {
-            $modalBackground.fadeToggle(200);
-            $aboutModal.fadeToggle(200);
+            var $aboutModal = $($('#template-about').html());
+            var $backgroundModal = $($('#template-modal-background').html());
+            $('body').append($backgroundModal.fadeTo(0, 0.01));
+            $('body').append($aboutModal.fadeTo(0, 0.01));
+            $('#modal-background').fadeTo(100, 1);
+            $('#about-modal').fadeTo(100, 1);
+            $('#close-about-button').on('click', function () {
+                $('#modal-background').fadeTo(100, 0.01);
+                $('#about-modal').fadeTo(100, 0.01);
+                $('#modal-background')
+                    .delay(200)
+                    .remove();
+                $('#about-modal')
+                    .delay(200)
+                    .remove();
+            });
         });
         // auto scroll
         $(window).scroll(function () {

@@ -24,7 +24,7 @@ define(["require", "exports"], function (require, exports) {
             themeOpeningResult += bubbleTemplate.replace(/{{text}}/g, result.opening_themes[i]);
         }
         var themeClosingResult = '';
-        for (var i = 0; i < result.opening_themes.length; i += 1) {
+        for (var i = 0; i < result.ending_themes.length; i += 1) {
             themeClosingResult += bubbleTemplate.replace(/{{text}}/g, result.ending_themes[i]);
         }
         var relatedAnimeResult = '';

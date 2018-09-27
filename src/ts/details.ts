@@ -89,7 +89,7 @@ function renderDetailResult(jsonResponse: any) {
     }
 
     let themeClosingResult = '';
-    for (let i = 0; i < result.opening_themes.length; i += 1) {
+    for (let i = 0; i < result.ending_themes.length; i += 1) {
         themeClosingResult += bubbleTemplate.replace(/{{text}}/g, result.ending_themes[i]);
     }
 

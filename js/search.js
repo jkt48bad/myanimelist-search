@@ -1,7 +1,7 @@
 /**
  * Contains logic for performing a search using the Jikan API
  */
-define(["require", "exports", "./advancedOptions"], function (require, exports, advancedOptions) {
+define(["require", "exports", "./advancedOptions", "./details"], function (require, exports, advancedOptions, details) {
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     /**
@@ -23,8 +23,16 @@ define(["require", "exports", "./advancedOptions"], function (require, exports, 
      */
     function renderSearchResults(jsonResponse) {
         var results = jsonResponse.results;
+        var template = $('#template-anime-card').html();
         for (var i = 0; i < results.length; i += 1) {
-            var content = "<div class=\"material-card search-result\">\n        <div class=\"top-section\">\n            <div class=\"image\">\n                <img src=\"" + results[i].image_url + "\"\n                    alt=\"" + results[i].title + "\">\n            </div>\n            <div class=\"details\">\n                <h2>" + results[i].title + "</h2>\n                <p>" + results[i].synopsis + "</p>\n            </div>\n        </div>\n        <div class=\"info\">\n            <span title=\"Content Type\"><i class=\"fas fa-tv\"></i> " + results[i].type + "</span>\n            <span title=\"Episode Count\"><i class=\"fas fa-list-ol\"></i> " + results[i].episodes + "</span>\n            <span title=\"User Rating\"><i class=\"fas fa-star\"></i> " + results[i].score + "</span>\n        </div>\n    </div>";
+            var content = template
+                .replace(/{{id}}/g, results[i].mal_id.toString())
+                .replace(/{{title}}/g, results[i].title)
+                .replace(/{{image_url}}/g, results[i].image_url)
+                .replace(/{{synopsis}}/g, results[i].synopsis)
+                .replace(/{{type}}/g, results[i].type)
+                .replace(/{{episodes}}/g, results[i].episodes.toString())
+                .replace(/{{score}}/g, results[i].score.toString());
             // appends the results and sets their visability to near 0
             $('.result-container').append($(content).fadeTo(0, 0.01));
         }
@@ -35,6 +43,13 @@ define(["require", "exports", "./advancedOptions"], function (require, exports, 
             $(ele)
                 .delay(50 * index)
                 .fadeTo(100, 1);
+        });
+        $('.search-result').on('click', function (event) {
+            var animeID = Number.parseFloat($(event.target)
+                .closest('.search-result')
+                .attr('id'));
+            console.log(animeID);
+            details.getDetailedResults(animeID);
         });
     }
     /**

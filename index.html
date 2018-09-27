@@ -13,6 +13,156 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
     <script src="js/require.js" data-main="js/main.js"></script>
+
+    <script id="template-anime-card" type="text/template">
+        <div id="{{id}}" class="material-card search-result">
+            <div class="top-section">
+                <div class="image">
+                    <img src="{{image_url}}"
+                        alt="{{title}}">
+                </div>
+                <div class="details">
+                    <h2>{{title}}</h2>
+                    <p>{{synopsis}}</p>
+                </div>
+            </div>
+            <div class="info">
+                <span class="bubble" title="Content Type"><i class="fas fa-tv"></i> {{type}}</span>
+                <span class="bubble" title="Episode Count"><i class="fas fa-list-ol"></i> {{episodes}}</span>
+                <span class="bubble" title="User Rating"><i class="fas fa-star"></i> {{score}}</span>
+            </div>
+        </div>
+    </script>
+
+    <!--Modal background template-->
+    <script id="template-modal-background" type="text/template">
+        <div id="modal-background" class="modal-background"></div>
+    </script>
+
+    <!--Anime detail modal template-->
+    <script id="template-anime-modal" type="text/template">
+        <div id="{{id}}-modal" class="modal">
+            <div class="modal-container">
+                <div class="modal-body">
+                    <div class="anime-content">
+                        <div class="header-content">
+                            <img class="poster" src="{{image_url}}">
+            
+                            <div>
+                                <h5>Score</h5>
+                                <div class="info">
+                                    <span class="bubble" title="Score"><i class="fas fa-star"></i> {{score}}</span>
+                                    <span class="bubble" title="Rank"><i class="fas fa-arrow-up"></i> {{rank}}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h5>Title</h5>
+                                <div class="info">
+                                    <span class="bubble" title="English"><i class="fas fa-language"></i> {{title_english}}</span>
+                                    <span class="bubble" title="Japanese"><i class="fas fa-language"></i> {{title_japanese}}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h5>Aired</h5>
+                                <div class="info">
+                                    <span class="bubble" title="From"><i class="fas fa-hourglass-start"></i> {{aired_start}}</span>
+                                    <span class="bubble" title="To"><i class="fas fa-hourglass-end"></i> {{aired_end}}</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h5>Genres</h5>
+                                <div class="info">
+                                    {{genres}}
+                                </div>
+                            </div>
+                            <div>
+                                <h5>Studios</h5>
+                                <div class="info">
+                                    {{studios}}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="main-info">
+                            <h4>{{title}}</h4>
+                            <div class="info">
+                                <span class="bubble" title="Content Type"><i class="fas fa-tv"></i> {{type}}</span>
+                                <span class="bubble" title="Episode Count"><i class="fas fa-list-ol"></i> {{episodes}}</span>
+                                <span class="bubble" title="Premiere Season"><i class="far fa-calendar"></i> {{premiered}}</span>
+                                <span class="bubble" title="Runtime"><i class="far fa-clock"></i> {{duration}}</span>
+                                <span class="bubble" title="Rating"><i class="far fa-eye"></i> {{rating}}</span>
+                            </div>
+                            <div class="description">
+                                <p>{{synopsis}}</p>
+                            </div>
+                            <div class="background">
+                                <p>{{background}}</p>
+                            </div>
+                            <div class="themes">
+                                <h5>Themes</h5>
+                                <div class="themes-details">
+                                    <div class="opening">
+                                        <h6>Opening</h6>
+                                        <div>
+                                            {{opening_themes}}
+                                        </div>
+                                    </div>
+                                    <div class="closing">
+                                        <h6>Ending</h6>
+                                        <div>
+                                            {{ending_themes}}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+            
+                            <div class="related-anime">
+                                <h5>Related Anime</h5>
+                                <ul>
+                                    {{related_anime}}
+                                </ul>
+                            </div>
+            
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button class="contained-button" id="close-{{id}}-button">Close</button>
+                </div>
+            </div>
+        </div>
+    </script>
+
+    <!--Bubble text template-->
+    <script id="template-bubble" type="text/template">
+        <span class="bubble">{{text}}</span>
+    </script>
+
+    <!--Related anime template-->
+    <script id="template-related-anime" type="text/template">
+        <li>{{type}}: <a href="">{{name}}</a></li>
+    </script>
+
+    <!--About modal template-->
+    <script id="template-about" type="text/template">
+        <div id="about-modal" class="modal">
+            <div class="modal-container small">
+                <div class="modal-header">
+                    <h4>About</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Website created by <a href="https://github.com/kdomasze">Kyle Domaszewicz</a>.</p>
+                    <p>Powered by <a href="https://myanimelist.net/">MyAnimeList</a> through the <a href="http://jikan.moe/">Jikan
+                            API</a>.</p>
+                    <p>Source code available <a href="https://github.com/kdomasze/MAL-Search">here</a>.</p>
+                    <p>Feel free to post any comments, questions, bugs, and feature requests in the <a href="https://github.com/kdomasze/MAL-Search/issues">issues
+                            page</a>.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="contained-button" id="close-about-button">Close</button>
+                </div>
+            </div>
+        </div>
+    </script>
 </head>
 
 <body>
@@ -31,6 +181,7 @@
             </li>
         </ul>
     </div>
+
     <div class="content">
         <div class="search-container">
             <input type="text" placeholder="Search..." class="search-box" id="search-box">
@@ -119,37 +270,7 @@
         <div class="result-container">
 
         </div>
-
     </div>
-
-    <div id="modal-background" class="modal-background"></div>
-    <div id="about-modal" class="modal">
-        <div class="modal-container small">
-            <div class="modal-header">
-                <h4>About</h4>
-            </div>
-            <div class="modal-body">
-                <p>Website created by <a href="https://github.com/kdomasze">Kyle Domaszewicz</a>.</p>
-                <p>Powered by <a href="https://myanimelist.net/">MyAnimeList</a> through the <a href="http://jikan.moe/">Jikan
-                        API</a>.</p>
-                <p>Source code available <a href="https://github.com/kdomasze/MAL-Search">here</a>.</p>
-                <p>Feel free to post any comments, questions, bugs, and feature requests in the <a href="https://github.com/kdomasze/MAL-Search/issues">issues
-                        page</a>.</p>
-            </div>
-            <div class="modal-footer">
-                <button class="contained-button" id="close-about-button">Close</button>
-            </div>
-        </div>
-    </div>
-
-    <!--
-    <div class="modal-background"></div>
-    <div class="modal">
-        <div class="container">
-            <h4>Header</h4>
-            <p>content</p>
-        </div>
-    </div>-->
 </body>
 
 </html>
